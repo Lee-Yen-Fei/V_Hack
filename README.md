@@ -1,4 +1,11 @@
 # V_Hack
+TEAM:
+- LEE YEN FEI
+- CHAN YEIK KAM
+
+Libraries used:
+- react.js
+
 Common for all themes:
 - AI chatbot for specialised advice
 - lightweight version of social media feed for users to improve their knowledge in the field
@@ -9,7 +16,7 @@ Agriculture:
 - [monitoring] ability to monitor the environment variables for each node upon click
 - [alerts] prompt warning messages when environment variables is at unoptimal values (node no. [x,y], environment variable)
 - [database] to search for crop species
-- [pest control] using drone images to identify crop damage
+- [pest control] using drone images to identify crop damage (depending on progress)
 
 Capital Market:
 - [budgeting] user-friendly budgeting, maybe can connect to e-wallet cashout transactions (privacy concern)?
