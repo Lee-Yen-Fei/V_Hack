@@ -1,0 +1,38 @@
+.postBox {
+  border: 1px solid #F9E79F;
+  border-radius: 10px;
+  width: auto;
+  background-color: #F9E79F;
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+.postMessage {
+  background-color: white;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.postButtons {
+  display: flex;
+}
+
+.postButton {
+  border: 1px solid #F9E79F;
+  flex-grow: 1;
+  flex-basis: 0;
+}
+
+.imgListContainer {
+  border-radius: 5px;
+  display: flex;
+  flex-flow: row wrap;
+  gap: 2px;
+  justify-content: center;
+  flex-basis: 0;
+}
+
+.imgListContainer > img {
+  width: 20%;
+  border-radius: 5px;
+}
