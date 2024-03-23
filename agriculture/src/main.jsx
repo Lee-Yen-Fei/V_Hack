@@ -7,6 +7,7 @@ import Homepage from "./Homepage";
 import FarmGPT from "./FarmGPT/FarmGPT.jsx";
 import NotFoundPage from "./NotFoundPage.jsx";
 import FarmHub from "./FarmHub/FarmHub.jsx";
+import FarmLand from "./FarmLand/FarmLand.jsx";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
     path: "/farmgpt",
     element: <FarmGPT />,
   },
+  {
+    path: "/farmland",
+    element: <FarmLand />,
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

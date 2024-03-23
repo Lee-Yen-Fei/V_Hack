@@ -4,13 +4,13 @@ import { Button, Input } from "antd";
 const { TextArea } = Input;
 import "./textBar.css";
 
-function TextBar({ func }) {
+function TextBar({ func: createMessage }) {
   const [text, setText] = useState("");
   const textAreaRef = useRef(null);
 
   function send() {
     //create post when send
-    func(text);
+    createMessage(text);
     setText("");
     textAreaRef.current.focus();
   }

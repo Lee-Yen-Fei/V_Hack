@@ -7,6 +7,8 @@ function Homepage() {
       <Link to={"/farmhub"}>Farm Hub</Link>
       <br />
       <Link to={"/farmgpt"}>FarmGPT</Link>
+      <br />
+      <Link to={"/farmland"}>FarmLand</Link>
     </div>
   );
 }
