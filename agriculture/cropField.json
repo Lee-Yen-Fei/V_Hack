@@ -35,5 +35,79 @@
         "image": "npk.png"
       }
     ]
+  },
+  {
+    "cropFieldName": "Area 2",
+    "cropPlanted": "cabbage",
+    "color": "#8F32F1",
+    "selectedArea": [
+      [
+        5,
+        7
+      ],
+      [
+        10,
+        8
+      ]
+    ],
+    "sensors": [
+      {
+        "name": "Soil moisture",
+        "value": "20%",
+        "image": "moisture.png"
+      },
+      {
+        "name": "Temperature",
+        "value": "33°C",
+        "image": "temperature.png"
+      },
+      {
+        "name": "pH",
+        "value": "6.8",
+        "image": "ph.png"
+      },
+      {
+        "name": "NPK",
+        "value": "12-9-12",
+        "image": "npk.png"
+      }
+    ]
+  },
+  {
+    "cropFieldName": "Area 3",
+    "cropPlanted": "potato",
+    "color": "#34F420",
+    "selectedArea": [
+      [
+        8,
+        9
+      ],
+      [
+        11,
+        14
+      ]
+    ],
+    "sensors": [
+      {
+        "name": "Soil moisture",
+        "value": "23%",
+        "image": "moisture.png"
+      },
+      {
+        "name": "Temperature",
+        "value": "32°C",
+        "image": "temperature.png"
+      },
+      {
+        "name": "pH",
+        "value": "7.0",
+        "image": "ph.png"
+      },
+      {
+        "name": "NPK",
+        "value": "9-12-10",
+        "image": "npk.png"
+      }
+    ]
   }
 ]

@@ -41,6 +41,7 @@ function FarmMap({
     const maxY = selections[1][1];
     var classNameVar = "";
     var backgroundColorVar = "";
+    console.log(cropAreaList);
 
     for (let col = 0; col < colNum; col++) {
       if (cropAreaList != undefined) {
@@ -109,12 +110,9 @@ function FarmMap({
       const topLeftY = cropArea.selectedArea[0][1];
       const botRightX = cropArea.selectedArea[1][0];
       const botRightY = cropArea.selectedArea[1][1];
-      if (x >= topLeftX && x <= botRightX && y >= topLeftY && y <= botRightY) {
-        console.log(cropArea);
-        setCropFieldName(cropArea.cropFieldName);
-        setCropPlanted(cropArea.cropPlanted);
-        return;
-      } else {
+      if (
+        !(x >= topLeftX && x <= botRightX && y >= topLeftY && y <= botRightY)
+      ) {
         setCropFieldName("");
         setCropPlanted("");
       }

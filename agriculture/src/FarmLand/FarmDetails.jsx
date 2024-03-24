@@ -73,6 +73,8 @@ function farmDetails({
     if (selectedCropField == undefined) {
       return;
     }
+    setCropFieldName(selectedCropField.cropFieldName);
+    setCropPlanted(selectedCropField.cropPlanted);
     return selectedCropField.sensors.map((sensor, index) => {
       return (
         <div className="sensor" key={index}>
