@@ -1,0 +1,34 @@
+.farmDetails {
+  width: 20%;
+  height: fit-content;
+}
+
+.fieldContainer {
+  display: flex;
+  flex-direction: column;
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+.sensor > div > img {
+  width: 24px;
+}
+
+.sensor > div > h4 {
+  padding: 0;
+  margin: 0;
+}
+
+.sensor > div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.sensor {
+  margin-top: 4px;
+  margin-bottom: 4px;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 4px;
+}

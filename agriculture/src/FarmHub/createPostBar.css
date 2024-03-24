@@ -15,11 +15,12 @@
   background-color: white;
   border-radius: 5px;
   border: 0px;
+  height: 30px;
 }
 
 .imageDisplay {
   flex-flow: row wrap;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 4px;
   background-color: white;
   border: 1px #F9E79F solid;
@@ -29,6 +30,8 @@
 .imageDisplay > img {
   max-width: 20%;
   border-radius: 5px;
+  margin: 10px;
+  box-shadow: 0 0 1px 0px grey;
 }
 
 #uploadFile {

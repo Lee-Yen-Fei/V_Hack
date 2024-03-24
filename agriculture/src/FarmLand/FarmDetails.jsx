@@ -1,8 +1,22 @@
 import { useState } from "react";
+import "./farmDetails.css";
 
-function farmDetails({ selections, cropAreaList, setCropAreaList }) {
-  const [cropName, setCropName] = useState("");
-  const [cropPlanted, setCropPlanted] = useState("");
+function farmDetails({
+  selections,
+  cropAreaList,
+  setCropAreaList,
+  currentSelection,
+  cropFieldName,
+  setCropFieldName,
+  cropPlanted,
+  setCropPlanted,
+}) {
+  const [cropFields, setCropFields] = useState([{}]);
+  const [fetchedSensors, setFetchedSensors] = useState(false);
+
+  if (!fetchedSensors) {
+    getSensors();
+  }
 
   function getRandomColor() {
     var letters = "0123456789ABCDEF";
@@ -15,14 +29,63 @@ function farmDetails({ selections, cropAreaList, setCropAreaList }) {
 
   function handleSubmit(submitEvent) {
     submitEvent.preventDefault();
+
     const SubmittedDetails = {
-      cropName: cropName,
+      cropFieldName: cropFieldName,
       cropPlanted: cropPlanted,
       color: getRandomColor(),
       selectedArea: selections,
     };
     setCropAreaList([...cropAreaList, SubmittedDetails]);
   }
+
+  function getSensors() {
+    fetch("./cropField.json")
+      .then((response) => response.json())
+      .then((cropFieldsJson) => {
+        setCropFields(cropFieldsJson);
+        setFetchedSensors(true);
+        setCropAreaList([...cropAreaList, ...cropFieldsJson]);
+      });
+  }
+
+  function sensorList() {
+    if (!fetchedSensors) {
+      return;
+    }
+    var selectedCropField;
+    var cropFIeldIndex;
+    cropFields.forEach((cropField, index) => {
+      const topLeftX = cropField.selectedArea[0][0];
+      const topLeftY = cropField.selectedArea[0][1];
+      const botRightX = cropField.selectedArea[1][0];
+      const botRightY = cropField.selectedArea[1][1];
+      if (
+        currentSelection[0] >= topLeftX &&
+        currentSelection[0] <= botRightX &&
+        currentSelection[1] >= topLeftY &&
+        currentSelection[1] <= botRightY
+      ) {
+        selectedCropField = cropField;
+        cropFIeldIndex = index;
+      }
+    });
+    if (selectedCropField == undefined) {
+      return;
+    }
+    return selectedCropField.sensors.map((sensor, index) => {
+      return (
+        <div className="sensor" key={index}>
+          <div>
+            <h4>{sensor.name}&nbsp;</h4>
+            <img src={sensor.image} alt="sensor.name" />
+          </div>
+          <p>{sensor.value}</p>
+        </div>
+      );
+    });
+  }
+
   return (
     <div className="farmDetails">
       <form onSubmit={handleSubmit}>
@@ -33,8 +96,8 @@ function farmDetails({ selections, cropAreaList, setCropAreaList }) {
             <input
               type="text"
               id="cropName"
-              value={cropName}
-              onChange={(e) => setCropName(e.target.value)}
+              value={cropFieldName}
+              onChange={(e) => setCropFieldName(e.target.value)}
             />
           </div>
           <div className="fieldContainer">
@@ -52,6 +115,8 @@ function farmDetails({ selections, cropAreaList, setCropAreaList }) {
             id="submitFarmDetails"
             value="Submit"
           />
+          <br />
+          <div className="sensorContainer">{sensorList()}</div>
         </fieldset>
       </form>
     </div>

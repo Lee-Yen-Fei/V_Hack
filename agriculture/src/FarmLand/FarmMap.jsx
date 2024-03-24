@@ -1,8 +1,37 @@
 import { useState } from "react";
+import "./farmMap.css";
 
-function FarmMap({ rowNum, colNum, selections, setSelections, cropAreaList }) {
+function FarmMap({
+  rowNum,
+  colNum,
+  selections,
+  setSelections,
+  cropAreaList,
+  setRowNum,
+  setColNum,
+  currentSelection,
+  setCurrentSelection,
+  setCropFieldName,
+  setCropPlanted,
+}) {
   const [selectionStatus, setSelectionStatus] = useState(0);
-  const [currentSelection, setCurrentSelection] = useState([]);
+
+  const onRowChange = (value) => {
+    if (value.target.value <= 500) {
+      setRowNum(value.target.value);
+    } else {
+      setRowNum(500);
+    }
+  };
+
+  const onColChange = (value) => {
+    console.log(value.target.value);
+    if (value.target.value <= 500) {
+      setColNum(value.target.value);
+    } else {
+      setColNum(500);
+    }
+  };
 
   function colList(row) {
     var cols = [];
@@ -55,6 +84,9 @@ function FarmMap({ rowNum, colNum, selections, setSelections, cropAreaList }) {
           style={{ backgroundColor: backgroundColorVar }}
         ></td>
       );
+
+      backgroundColorVar = "";
+      classNameVar = "";
     }
     return cols;
   }
@@ -71,6 +103,23 @@ function FarmMap({ rowNum, colNum, selections, setSelections, cropAreaList }) {
     const x = parseInt(clickEvent.target.getAttribute("x"));
     const y = parseInt(clickEvent.target.getAttribute("y"));
     setCurrentSelection([x, y]);
+
+    cropAreaList.forEach((cropArea) => {
+      const topLeftX = cropArea.selectedArea[0][0];
+      const topLeftY = cropArea.selectedArea[0][1];
+      const botRightX = cropArea.selectedArea[1][0];
+      const botRightY = cropArea.selectedArea[1][1];
+      if (x >= topLeftX && x <= botRightX && y >= topLeftY && y <= botRightY) {
+        console.log(cropArea);
+        setCropFieldName(cropArea.cropFieldName);
+        setCropPlanted(cropArea.cropPlanted);
+        return;
+      } else {
+        setCropFieldName("");
+        setCropPlanted("");
+      }
+    });
+
     if (selectionStatus == 0) {
       setSelectionStatus(1);
       return;
@@ -91,9 +140,38 @@ function FarmMap({ rowNum, colNum, selections, setSelections, cropAreaList }) {
   }
 
   return (
-    <table className="farmLandTable">
-      <tbody>{rowList()}</tbody>
-    </table>
+    <div className="farmMapContainer">
+      <div className="farmMapTableContainer">
+        <table className="farmMapTable">
+          <tbody>{rowList()}</tbody>
+        </table>
+
+        <div className="farmLandDimensions">
+          <div className="rowDimension">
+            <label htmlFor="rowNumber">Number of rows: </label>
+            <input
+              id="rowNumber"
+              type="number"
+              max={500}
+              className="dimensions"
+              value={rowNum}
+              onChange={onRowChange}
+            />
+          </div>
+          <div className="colDimension">
+            <label htmlFor="rowNumber">Number of columns: </label>
+            <input
+              id="colNumber"
+              type="number"
+              max={500}
+              className="dimensions"
+              value={colNum}
+              onChange={onColChange}
+            />
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
 

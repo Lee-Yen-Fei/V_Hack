@@ -1,0 +1,15 @@
+.farmLandDimensions {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 4px;
+}
+
+.farmLandDimensions > div > input {
+  width: 80px;
+}
+
+.farmMapContainer {
+  display: flex;
+  align-items: center;
+}

@@ -1,0 +1,39 @@
+[
+  {
+    "cropFieldName": "Area 1",
+    "cropPlanted": "carrot",
+    "color": "#894839",
+    "selectedArea": [
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        2
+      ]
+    ],
+    "sensors": [
+      {
+        "name": "Soil moisture",
+        "value": "30%",
+        "image": "moisture.png"
+      },
+      {
+        "name": "Temperature",
+        "value": "30°C",
+        "image": "temperature.png"
+      },
+      {
+        "name": "pH",
+        "value": "6.5",
+        "image": "ph.png"
+      },
+      {
+        "name": "NPK",
+        "value": "10-10-10",
+        "image": "npk.png"
+      }
+    ]
+  }
+]

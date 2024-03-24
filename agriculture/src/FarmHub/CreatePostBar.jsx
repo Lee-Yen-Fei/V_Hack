@@ -23,6 +23,7 @@ function CreatePostBar({ createPostFunc }) {
 
   function post() {
     createPostFunc(createPostText, uploadedFiles);
+    setUploadedFiles([]);
     setCreatePostText("");
   }
 
