@@ -5,14 +5,29 @@ import "./farmGPT.css";
 
 function Chatbot() {
   const [messages, setMessages] = useState([]);
+  const [fetchMsg, setFetchMsg] = useState(false);
 
   const messageList = messages.map((message, index) => (
-    <MessageBox key={index} side={0} text={message}></MessageBox>
+    <MessageBox key={index} side={message.side} text={message.msg}></MessageBox>
   ));
 
+  if (!fetchMsg) {
+    getMsg();
+  }
+
+  function getMsg() {
+    fetch("./chatbotMessages.json")
+      .then((response) => response.json())
+      .then((messagesJson) => {
+        console.log(messagesJson);
+        setMessages([...messages, ...messagesJson]);
+        setFetchMsg(true);
+      });
+  }
+
   function createMessage(text) {
-    if (messages.length > 0) setMessages((m) => [...m, text]);
-    else setMessages([text]);
+    if (messages.length > 0) setMessages((m) => [...m, { msg: text, side: 0 }]);
+    else setMessages([{ msg: text, side: 0 }]);
   }
 
   return (

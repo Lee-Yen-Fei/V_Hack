@@ -6,6 +6,8 @@ const SIDE = {
 };
 
 function MessageBox({ side, text }) {
+  console.log(text);
+
   function createMessageBox(side, text) {
     if (side == SIDE.USER) {
       return (
@@ -19,6 +21,20 @@ function MessageBox({ side, text }) {
         >
           <h4>You</h4>
           <p>{text}</p>
+        </div>
+      );
+    } else {
+      return (
+        <div
+          className="messageBox"
+          style={{
+            marginLeft: 0,
+            marginRight: "auto",
+            backgroundColor: "#E5D7BD",
+          }}
+        >
+          <h4>FarmGPT</h4>
+          <p dangerouslySetInnerHTML={{ __html: text }}></p>
         </div>
       );
     }
